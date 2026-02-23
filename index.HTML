@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manual Maestro de Terminal Linux y Bash Scripting</title>
+</head>
+<body>
+    <h1>Manual Maestro de Terminal Linux y Bash Scripting</h1>
+    <p>Generado con Asistencia de IA</p>
+    <p>22 de febrero de 2026</p>
+
+    <h2>Índice</h2>
+    <ol>
+        <li><a href="#seccion1">Sección I: Comandos Básicos de Sistema</a>
+            <ol>
+                <li><a href="#comandos_listado">Comandos de Listado (ls)</a></li>
+                <li><a href="#navegacion_lectura">Navegación y Lectura (cd, cat, more, less)</a></li>
+                <li><a href="#gestion_archivos">Gestión de Archivos (cp, mv, rm)</a></li>
+                <li><a href="#creacion_directorios">Creación de Directorios (mkdir, rmdir)</a></li>
+            </ol>
+        </li>
+        <li><a href="#seccion2">Sección II: Comandos Avanzados y Filtros</a>
+            <ol>
+                <li><a href="#ordenamiento_busqueda">Ordenamiento y Búsqueda (sort, grep)</a></li>
+                <li><a href="#localizacion_procesamiento">Localización y Procesamiento (find, cut, ln, ps)</a></li>
+                <li><a href="#utilidades_texto">Utilidades de Texto (head, tail, wc, touch, uniq)</a></li>
+                <li><a href="#permisos_administracion">Permisos y Administración (chmod, chown, alias)</a></li>
+            </ol>
+        </li>
+        <li><a href="#seccion3">Sección III: Programación Shell (Bash Scripting)</a>
+            <ol>
+                <li><a href="#estructura_basica">Estructura Básica</a></li>
+                <li><a href="#variables_argumentos">Variables y Argumentos</a></li>
+                <li><a href="#estructuras_control">Estructuras de Control</a></li>
+            </ol>
+        </li>
+        <li><a href="#seccion4">Sección IV: Resolución de Errores Comunes</a>
+            <ol>
+                <li><a href="#permission_denied">Permission Denied</a></li>
+                <li><a href="#command_not_found">Command Not Found</a></li>
+            </ol>
+        </li>
+        <li><a href="#seccion5">Sección V: Flujo de Datos y Operadores</a>
+            <ol>
+                <li><a href="#operadores_redireccion">Operadores de Redirección</a></li>
+                <li><a href="#ejemplos_combinacion">Ejemplos de Combinación</a></li>
+            </ol>
+        </li>
+        <li><a href="#seccion6">Sección VI: Documentación de la IA</a></li>
+    </ol>
+
+    <h2 id="seccion1">Sección I: Comandos Básicos de Sistema</h2>
+    <p>Esta sección cubre la navegación y manipulación de archivos y directorios.</p>
+
+    <h3 id="comandos_listado">1.1. Comandos de Listado (ls)</h3>
+    <p>El comando <code>ls</code> permite visualizar el contenido de los directorios.</p>
+    <ul>
+        <li><strong>Variantes:</strong> <code>ls</code>, <code>ls -ruta</code>, <code>ls -l</code> (una fila), <code>ls -a</code> (ocultos), <code>ls -h</code> (legible), <code>ls -t</code> (por tiempo), <code>ls -r</code> (reversa), <code>ls -R</code> (recursivo), <code>ls -S</code> (tamaño), <code>ls -i</code> (inodes), <code>ls -la</code>, <code>ls -lh</code>, <code>ls -ltr</code>, <code>ls -ld</code>, <code>ls --color</code>, <code>ls -F</code>, <code>ls -x</code>, <code>ls -C</code>, <code>ls -u</code>, <code>ls -cr</code>.</li>
+        <li><strong>Uso de Comodines:</strong> <code>ls *.gif</code>, <code>ls archivo?</code>, <code>ls [A-Z]</code>, <code>ls [a-z0-9]</code>, <code>ls jose [113]</code>, <code>ls -(sS) *.l?t</code>.</li>
+    </ul>
+    <p><strong>Ejemplos:</strong></p>
+    <pre><code>
+ls -la /home/usuario # Lista todos los archivos con detalles.
+ls [a-z]* # Lista archivos que empiecen con letra minuscula.
+ls -R /etc # Lista recursivamente el directorio de configuracion.
+    </code></pre>
+
+    <h3 id="navegacion_lectura">1.2. Navegación y Lectura (cd, cat, more, less)</h3>
+    <ul>
+        <li><code>cd</code>: <code>cd</code>, <code>cd directorio</code>, <code>cd ..</code>, <code>cd ../foo</code>, <code>cd /</code>, <code>cd ../..</code>, <code>cd /.</code></li>
+        <li><code>cat</code>: <code>cat</code>, <code>cat archivo1 archivo2</code>, <code>cat archivo1 archivo2 > archivo3</code> (unir), <code>cat archivo1 archivo2 archivo3 >> archivo3</code> (añadir), <code>cat carta.txt</code>.</li>
+    </ul>
+    <p>Visualizadores: <code>more &lt;fichero&gt;</code>, <code>less carta.txt</code>, <code>ls | less</code>.</p>
+    <p><strong>Ejemplos:</strong></p>
+    <pre><code>
+cd /var/log && cat syslog # Entra al directorio y muestra el log.
+cat parte1.txt parte2.txt > final.txt # Une dos archivos.
+    </code></pre>
+
+    <h3 id="gestion_archivos">1.3. Gestión de Archivos (cp, mv, rm)</h3>
+    <ul>
+        <li><code>cp</code> (copiar): Opciones <code>-d</code>, <code>-f</code>, <code>-i</code>, <code>-l</code>, <code>-p</code>, <code>-s</code>, <code>-R</code>, <code>-v</code>.</li>
+        <li><code>mv</code> (mover/renombrar): Opciones <code>-f</code>, <code>-i</code>, <code>-v</code>, <code>-u</code>.</li>
+        <li><code>rm</code> (borrar): Opciones <code>-f</code>, <code>-i</code>, <code>-r</code>, <code>-R</code>, <code>-v</code>.</li>
+    </ul>
+    <p><strong>Ejemplos:</strong></p>
+    <pre><code>
+cp -r /orig /dest # Copia directorios de forma recursiva.
+mv archivo1.txt nuevo_nombre.txt # Renombra un archivo.
+rm -rf directorio_viejo # Borra un directorio y su contenido sin preguntar.
+    </code></pre>
+
+    <h3 id="creacion_directorios">1.4. Creación de Directorios (mkdir, rmdir)</h3>
+    <ul>
+        <li><code>mkdir</code>: <code>mkdir trabajo</code>, <code>mkdir -p /home/jose/test</code>.</li>
+        <li><code>rmdir</code>: <code>rmdir subdir</code>, <code>rmdir -r namedir</code>.</li>
+    </ul>
+
+    <h2 id="seccion2">Sección II: Comandos Avanzados y Filtros</h2>
+
+    <h3 id="ordenamiento_busqueda">2.1. Ordenamiento y Búsqueda (sort, grep)</h3>
+    <ul>
+        <li><code>sort</code>: <code>sort fichero</code>, <code>sort -o f1 f1</code>, <code>sort -r</code> (reverso), <code>sort -n</code> (numérico). Opciones: <code>-f</code>, <code>-t</code>, <code>-u</code>, <code>-c</code>, <code>-k</code>.</li>
+        <li><code>grep</code>: Busca patrones. Opciones: <code>-c</code>, <code>-i</code>, <code>-n</code>, <code>-v</code>, <code>-l</code>.</li>
+    </ul>
+    <p><strong>Ejemplos:</strong></p>
+    <pre><code>
+sort -n edades.txt # Ordena un archivo por numeros.
+grep -i "error" /var/log/syslog # Busca "error" ignorando mayusculas.
+grep -v "proceso" lista.txt # Muestra lineas que NO contienen "proceso".
+    </code></pre>
+
+    <h3 id="localizacion_procesamiento">2.2. Localización y Procesamiento (find, cut, ln, ps)</h3>
+    <ul>
+        <li><code>find</code>: <code>find . -name "*.txt"</code>.</li>
+        <li><code>cut</code>: Extrae columnas. <code>cut -f 1 -d ':' /etc/passwd</code>.</li>
+        <li><code>ln</code>: Crea enlaces. <code>ln -s origen destino</code> (simbólico).</li>
+        <li><code>ps</code>: Procesos. Opciones <code>aux</code>, <code>l</code>, <code>u</code>, <code>j</code>.</li>
+    </ul>
+
+    <h3 id="utilidades_texto">2.3. Utilidades de Texto (head, tail, wc, touch, uniq)</h3>
+    <ul>
+        <li><code>head/tail</code>: Primeras o últimas N líneas (<code>-n</code>).</li>
+        <li><code>wc</code>: Cuenta palabras (<code>-w</code>), líneas (<code>-l</code>) o caracteres (<code>-c</code>).</li>
+        <li><code>touch</code>: Crea archivos vacíos o cambia marcas de tiempo.</li>
+        <li><code>uniq</code>: Omite líneas repetidas adyacentes.</li>
+    </ul>
+
+    <h3 id="permisos_administracion">2.4. Permisos y Administración (chmod, chown, alias)</h3>
+    <ul>
+        <li><code>chmod</code>: Cambia permisos. <code>chmod 755 script.sh</code>, <code>chmod u+x archivo</code>.</li>
+        <li><code>chown/chgrp</code>: Cambia propietario y grupo.</li>
+    </ul>
+
+    <h2 id="seccion3">Sección III: Programación Shell (Bash Scripting)</h2>
+    <p>Un script es un archivo ejecutable que contiene una serie de comandos.</p>
+
+    <h3 id="estructura_basica">3.1. Estructura Básica</h3>
+    <p>Todo script debe comenzar con el Shebang: <code>#!/bin/bash</code>.</p>
+
+    <h3 id="variables_argumentos">3.2. Variables y Argumentos</h3>
+    <pre><code>
+nombre="Usuario"
+echo "Hola $nombre"
+echo "Primer argumento: $1"
+    </code></pre>
+
+    <h3 id="estructuras_control">3.3. Estructuras de Control</h3>
+    <p><strong>Estructura If-Else:</strong></p>
+    <pre><code>
+if [ -f "archivo.txt" ]; then
+  echo "El archivo existe"
+else
+  echo "No encontrado"
+fi
+    </code></pre>
+
+    <p><strong>Bucle For (Instalador sencillo):</strong></p>
+    <pre><code>
+for paquete in git vim curl; do
+  sudo apt install $paquete
+done
+    </code></pre>
+
+    <p><strong>Bucle While (Backup Automatizado):</strong></p>
+    <pre><code>
+while [ $# -gt 0 ]; do
+  tar -czf "backup_$1.tar.gz" "$1"
+  shift
+done
+    </code></pre>
+
+    <h2 id="seccion4">Sección IV: Resolución de Errores Comunes</h2>
+
+    <h3 id="permission_denied">4.1. Permission Denied</h3>
+    <p>Identificación: El sistema impide ejecutar o leer un archivo.</p>
+    <ol>
+        <li>Falta sudo: Ejecutar con <code>sudo !!</code>.</li>
+        <li>Sin permisos ejecución: Usar <code>chmod +x archivo</code>.</li>
+        <li>Propietario incorrecto: Corregir con <code>chown</code>.</li>
+        <li>Partición montada solo lectura: Revisar <code>mount</code>.</li>
+        <li>Protección de directorio: Revisar permisos del directorio padre.</li>
+    </ol>
+
+    <h3 id="command_not_found">4.2. Command Not Found</h3>
+    <p>Identificación: El comando no está instalado o no está en el PATH.</p>
+    <ol>
+        <li>Error tipográfico: Escribir <code>sl</code> en vez de <code>ls</code>.</li>
+        <li>No instalado: Usar <code>apt install [comando]</code>.</li>
+        <li>PATH incompleto: Agregar ruta a <code>.bashrc</code>.</li>
+        <li>Script local: Usar <code>./script.sh</code> en lugar de <code>script.sh</code>.</li>
+    </ol>
+
+    <h2 id="seccion5">Sección V: Flujo de Datos y Operadores</h2>
+    <p>En Linux, todo se trata de flujos de datos.</p>
+    <ul>
+        <li><code>stdin (0)</code>: Entrada estándar (teclado).</li>
+        <li><code>stdout (1)</code>: Salida estándar (pantalla).</li>
+        <li><code>stderr (2)</code>: Salida de errores.</li>
+    </ul>
+
+    <h3 id="operadores_redireccion">5.1. Operadores de Redirección</h3>
+    <ul>
+        <li><code>|</code> (Pipe): Pasa la salida de un comando a la entrada de otro.</li>
+        <li><code>></code> (Sobre-escribir): Envía salida a un archivo borrando lo anterior.</li>
+        <li><code>>></code> (Añadir): Envía salida al final de un archivo.</li>
+        <li><code>2></code> (Redirigir errores): Captura solo los mensajes de error.</li>
+    </ul>
+
+    <h3 id="ejemplos_combinacion">5.2. Ejemplos de Combinación</h3>
+    <ol>
+        <li>Filtro de combinación: <code>ls /etc | grep "network"</code> (Busca archivos específicos en <code>/etc</code>).</li>
+        <li>Conteo y ordenamiento: <code>cat lista.txt | sort | uniq | wc -l</code> (Cuenta líneas únicas ordenadas).</li>
+        <li>Registro de errores: <code>ls /dirinexistente2 > errores.log</code> (Guarda el error en un log).</li>
+    </ol>
+
+    <h2 id="seccion6">Sección VI: Documentación de la IA</h2>
+    <p>Declaración: Este documento fue generado con la asistencia de Inteligencia Artificial (IA).</p>
+    <p>Prompt de Instrucciones: "Generar un manual en base a las instrucciones del archivo adjunto, que contemple comandos básicos (ls, cat, cd, cp, mv, rm, etc.), comandos avanzados (sort, grep, find, cut, etc.), programación shell (bash, variables, if, for, while), resolución de errores comunes, flujo de datos (stdin, stdout, stderr) y operadores de redirección. Todo en formato LaTeX.”</p>
+    <p>Partes Generadas y Corregidas: La IA generó la estructura completa del documento LaTeX, organizó las listas de comandos proporcionadas por el usuario en categorías lógicas, redactó los ejemplos de scripting y los casos de resolución de errores basados en las mejores prácticas de sistemas.</p>
+</body>
+</html>
